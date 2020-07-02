@@ -1,0 +1,65 @@
+2004  rails new auto_complete
+2005  cd auto_complete/
+2006  bundle install
+2007  yarn add jquery
+2008  yarn add popper.js
+2009  yarn add jquery-ui
+2010  yarn add bootstrap
+2011  yarn add jquery-ui-dist
+2012  yarn install
+(Check package.json)
+2013  ruby -v
+2014  rails g controller Information search
+2015  rails g model Info name:string
+2016  rails db:migrate
+2017  rails db:seed
+2018  rails s
+2019  git add .
+2020  git reset
+
+----------------------------------------------------
+GEMFILE :
+
+gem 'popper_js'
+
+gem 'jquery-rails'
+
+gem 'bootstrap'
+
+gem 'jquery-ui-rails'
+
+2006...
+------------------------------------------------------------
+application.js
+
+require("jquery")
+require("jquery-ui")
+require("bootstrap")
+
+------------------------------------------------------------
+environment.js
+
+const webpack = require('webpack')
+environment.plugins.prepend('Provide',
+  new webpack.ProvidePlugin({
+    $: 'jquery/src/jquery',
+    jQuery: 'jquery/src/jquery',
+    Popper: ['popper.js', 'default'],
+    'windows.jQuery': 'jquery'
+  })
+)
+
+const aliasConfig = {
+  'jquery': 'jquery/src/jquery',
+  'jquery-ui': 'jquery-ui-dist/jquery-ui.js'
+
+};
+
+environment.config.set('resolve.alias', aliasConfig);
+
+-------------------------------------------------------------
+application.css.scss
+
+*= require jquery-ui
+
+@import "bootstrap";
