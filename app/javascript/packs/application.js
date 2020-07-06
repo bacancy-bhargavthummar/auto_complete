@@ -10,6 +10,7 @@ require("channels")
 require("jquery")
 require("jquery-ui")
 require("bootstrap")
+require("select2")
 require("packs/search_form")
 
 // Uncomment to copy all static images under ../images to the output folder and reference
