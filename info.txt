@@ -1,3 +1,6 @@
+
+=> 1st commit :
+
 2004  rails new auto_complete
 2005  cd auto_complete/
 2006  bundle install
@@ -63,3 +66,57 @@ application.css.scss
 *= require jquery-ui
 
 @import "bootstrap";
+
+-------------------------------------------------------------
+
+=> 2nd commit:
+
+gem 'select2-rails'
+yarn add select2
+
+require("select2") --> (In application.js)
+
+*= require select2           __|  In application.css.scss 
+*= require select2-bootstrap __|
+
+-------------------------------------------------------------
+
+  // for input field drop-down
+    $(".select2-ajax").each(function(idx, element) {
+      debugger
+      // $(this).on('change', function(e) {
+      //   $('#form_field').val($(this).select2('data').text);
+      // });
+
+      var query = $(this).val();
+      $(element).select2({
+        allowClear: true,
+        placeholder: "select name",
+        theme: "bootstrap",
+        width: 200,
+        ajax: {
+          url: "information/auto_completed",
+          type: "get",
+          dataType: 'json',
+          data: {
+            track: query
+          },
+          results: function (data){
+            debugger
+            return {
+              results: data.results
+            }
+          },
+        },
+      });
+    });
+
+
+    # @infos.zip(new_sequence).each_with_index do |(ids, person), index|
+    #   position = index+1
+    #   person.update(position: position)
+    # end
+
+    ---------------------------------------------------------
+
+    

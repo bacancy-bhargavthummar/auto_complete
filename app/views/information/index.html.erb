@@ -1,3 +1,14 @@
+<h3>For Drag and Drop</h3>   
+<ul id="names_for_drag_and_drop">
+  <% @infos.each do |info| %>   
+    <%= content_tag(:li, id: "#{info.id}") do %>
+      <%= info.name %> 
+    <% end %>
+  <% end %> 
+</ul>
+
+<hr> 
+
 <div class="container">
   <div class="row">
     <div class="col-lg-12 mt-5">

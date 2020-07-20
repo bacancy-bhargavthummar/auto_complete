@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'information#index'
   get 'information/auto_complete' => 'information#auto_complete'
   get 'information/search' => 'information#search'
+  post 'information/update_sort' => 'information#update_sort'
 end

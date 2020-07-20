@@ -38,8 +38,8 @@ $(document).ready(function(){
   $('.js-searchable').select2({
     allowClear: true,
     placeholder: "select name",
-    width: 200
-    // If you are using Bootstrap, please add　`theme: "bootstrap"` too.
+    theme: "bootstrap",
+    width: 250
   });
 
   $(".select2_div").change(function(){
@@ -54,6 +54,24 @@ $(document).ready(function(){
         alert("Something went wrong...")
       }
     });
+  });
+
+  // For Sortable
+  $("#names_for_drag_and_drop").sortable({
+    axis: 'y',
+    update: function(){
+      var new_sequence = []
+      $(this).children().each(function(){
+          new_sequence.push($(this).attr("id"))
+      })
+      $.ajax({
+        url: "/information/update_sort",
+        type: "POST",
+        data: {
+          infos: new_sequence
+        }
+      })
+    }
   });
 
 })
