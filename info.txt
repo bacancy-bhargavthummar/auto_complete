@@ -111,12 +111,19 @@ require("select2") --> (In application.js)
       });
     });
 
-
+    Reference: https://www.youtube.com/watch?v=0aBsUkJMbmE
     # @infos.zip(new_sequence).each_with_index do |(ids, person), index|
     #   position = index+1
     #   person.update(position: position)
     # end
 
-    ---------------------------------------------------------
+-------------------------------------------------------------------------
 
+=> 3rd commit:
+
+  Added column in Info model named position
+  Wrote "update_sort" method in controller and wrote js code for sortable in search_form.js
     
+=> 4th commit:
+  
+  ran "yarn upgrade"
