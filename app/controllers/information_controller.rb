@@ -5,6 +5,11 @@ class InformationController < ApplicationController
   def index
   end
 
+  def new
+    Info.create(name: "#{params["name"].capitalize}")
+    @infos = Info.order("position")
+  end
+
   def auto_complete
     @results = Info.where("name LIKE ?", "%#{params['track'].capitalize}%").pluck(:name)
     @results = @results.present? ? @results : nil

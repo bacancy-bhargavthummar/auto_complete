@@ -1,0 +1,5 @@
+<% infos.each do |info| %>   
+  <%= content_tag(:li, id: "#{info.id}") do %>
+    <%= info.name %> 
+  <% end %>
+<% end %> 

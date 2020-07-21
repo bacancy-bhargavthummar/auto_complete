@@ -1,33 +1,46 @@
-<h3>For Drag and Drop</h3>   
-<ul id="names_for_drag_and_drop">
-  <% @infos.each do |info| %>   
-    <%= content_tag(:li, id: "#{info.id}") do %>
-      <%= info.name %> 
-    <% end %>
-  <% end %> 
-</ul>
-
-<hr> 
+<br><br>
+<% if flash[:alert] %>
+  <div class="alert alert-warning"><%= flash[:alert] %></div>
+<% end %>
 
 <div class="container">
   <div class="row">
-    <div class="col-lg-12 mt-5">
-      <% if flash[:alert] %>
-        <div class="alert alert-warning"><%= flash[:alert] %></div>
+    <div class="col-sm">
+      <h3>For Drag and Drop</h3><hr>   
+      <ul id="names_for_drag_and_drop">
+        <%= render partial: "information/list", locals: { infos: @infos } %>
+      </ul>
+    </div>
+
+    <div class="col-sm" style="width: 400px">
+      <h3>Search with autocomplete</h3><hr>
+      <%= form_tag( information_search_path, remote: true, method: :get, class: "search_form") do %>
+        <div class="form-group">
+          <%= text_field_tag :track, nil, placeholder: 'eg. Aaa', class: 'form-control', id: 'form_field' %>
+        </div>
+        <%= button_tag 'Search', data: { disable_with: "Searching..."}, class: 'btn btn-success btn-block' %>
       <% end %>
-      <div class="mx-auto mt-5" style="width: 400px">
-        <%= form_tag( information_search_path, remote: true, method: :get, class: "search_form") do %>
-          <div class="form-group">
-            <%= label_tag :track, 'Search '%>
-            <%= text_field_tag :track, nil, placeholder: 'eg. Aaa', class: 'form-control', id: 'form_field' %>
-          </div>
-          <%= button_tag 'Search', data: { disable_with: "Searching..."}, class: 'btn btn-success btn-block' %>
-        <% end %>
-      </div>
+    </div>
+
+    <div class="col-sm" style="width: 400px">
+
+      <h3>Add new name</h3><hr>
+      <%= form_tag( information_new_path, remote: true, method: :post, class: "new_form") do %>
+        <div class="form-group">
+          <%= text_field_tag :name, nil, placeholder: 'eg. Aaa', class: 'form-control', id: "new_form_field" %>
+        </div>
+        <%= button_tag 'Submit', data: { disable_with: "Adding..."}, class: 'new_form btn btn-warning btn-block' %>
+      <% end %>
+      <br></br>
+
+      <h3>Search</h3>
       <div class="select2_div">
         <%= select_tag "Name", options_from_collection_for_select(Info.all, :id, :name), class: 'js-searchable', include_blank: true  %>
       </div>
     </div>
+
   </div>
 </div>
+
+<hr>
 <div class="results" ></div>

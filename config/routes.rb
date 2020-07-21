@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get 'information/auto_complete' => 'information#auto_complete'
   get 'information/search' => 'information#search'
   post 'information/update_sort' => 'information#update_sort'
+  post 'information/new' => 'information#new'
 end

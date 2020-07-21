@@ -117,6 +117,8 @@ require("select2") --> (In application.js)
     #   person.update(position: position)
     # end
 
+    
+
 -------------------------------------------------------------------------
 
 => 3rd commit:
@@ -127,3 +129,29 @@ require("select2") --> (In application.js)
 => 4th commit:
   
   ran "yarn upgrade"
+
+--------------------------------------------------------------------------
+
+$("#names_for_drag_and_drop").load("index.html.erb);
+# $("#names_for_drag_and_drop").load("#names_for_drag_and_drop > * ", "");
+# $(".new_form").trigger('reset');
+
+<h3>For Drag and Drop</h3>   
+<ul id="names_for_drag_and_drop">
+  <% @infos.each do |info| %>   
+    <%= content_tag(:li, id: "#{info.id}") do %>
+      <%= info.name %> 
+    <% end %>
+  <% end %> 
+</ul>
+
+
+<div class="mx-auto mt-5" style="width: 400px">
+    <h3>Add new name</h3>
+    <div class="form-group">
+      <%= text_field :name, nil, placeholder: 'eg. Aaa', class: 'form-control', id: "new_form_field" %>
+    </div>
+    <%= button_tag 'Submit', data: { disable_with: "Adding..."}, class: 'new_form btn btn-warning btn-block' %>
+</div>
+
+<hr>

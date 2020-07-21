@@ -3,7 +3,16 @@ $(document).ready(function(){
     var body = $("#form_field").val();
 
     if (body.length < 1) {
-      alert('Please enter the name song of to search.');
+      alert('Please enter the name to search.');
+      return false;
+    }
+  });
+
+  $(".new_form").submit(function(){
+    var body = $("#new_form_field").val();
+
+    if (body.length < 1) {
+      alert("Text field can't be empty.");
       return false;
     }
   });
@@ -39,7 +48,7 @@ $(document).ready(function(){
     allowClear: true,
     placeholder: "select name",
     theme: "bootstrap",
-    width: 250
+    width: 350
   });
 
   $(".select2_div").change(function(){
